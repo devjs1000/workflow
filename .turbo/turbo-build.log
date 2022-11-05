@@ -1,0 +1,28 @@
+
+> workflow@0.1.0 build C:\Users\anand\code-fun\workflow
+> next build
+
+info  - Linting and checking validity of types...
+info  - Creating an optimized production build...
+info  - Compiled successfully
+info  - Collecting page data...
+info  - Generating static pages (0/3)
+info  - Generating static pages (3/3)
+info  - Finalizing page optimization...
+
+Route (pages)                              Size     First Load JS
+┌ ○ /                                      4.35 kB        77.1 kB
+├   └ css/ae0e3e027412e072.css             707 B
+├   /_app                                  0 B            72.7 kB
+├ ○ /404                                   182 B          72.9 kB
+└ λ /api/hello                             0 B            72.7 kB
++ First Load JS shared by all              73 kB
+  ├ chunks/framework-ca7c00cca7c6789b.js   45.4 kB
+  ├ chunks/main-d3716d65528aac45.js        26.3 kB
+  ├ chunks/pages/_app-f8868ac1d0975513.js  297 B
+  ├ chunks/webpack-8fa1640cc84ba8fe.js     750 B
+  └ css/ab44ce7add5c3d11.css               247 B
+
+λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
