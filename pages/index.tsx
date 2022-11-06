@@ -55,7 +55,10 @@ export default function Home() {
           <Button onClick={formik.submitForm}>save</Button>
         </HStack>
 
-        <LsFiles path={formik.values.path} />
+        <LsFiles
+          setPath={formik.setFieldValue as any}
+          path={formik.values.path}
+        />
       </Box>
     </Box>
   );
