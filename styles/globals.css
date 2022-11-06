@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.container {
+  @apply flex flex-col items-center justify-center min-h-screen py-2;
+}
+
+.bg-img-primary {
+  background-image: url("https://w7.pngwing.com/pngs/863/104/png-transparent-green-liquid-visual-effects-special-effects-blue-darkness-turquoise-black-background-texture-atmosphere-computer-wallpaper.png");
+}
+
+.gradient-primary {
+  background-image: linear-gradient(
+    90deg,
+    #101f19b4 0%,
+    rgba(17, 28, 35, 0.74) 50%,
+    #141717c2 100%
+  );
+}
+
+.gradient-secondary {
+  background: rgb(8, 55, 62);
+  background: radial-gradient(
+    circle,
+    rgba(8, 55, 62, 0.8158613787311799) 0%,
+    rgba(16, 22, 29, 1) 100%
+  );
+}
