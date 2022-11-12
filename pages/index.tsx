@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import Head from "next/head";
 import { useEffect } from "react";
 import LsFiles from "../components/LsFiles";
+import Nav from "../components/Nav";
 
 export default function Home() {
   const formik = useFormik({
@@ -46,6 +47,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Box>
+        <Nav />
         <HStack>
           <Input
             placeholder="path"
@@ -54,11 +56,12 @@ export default function Home() {
           />
           <Button onClick={formik.submitForm}>save</Button>
         </HStack>
-
-        <LsFiles
-          setPath={formik.setFieldValue as any}
-          path={formik.values.path}
-        />
+        {formik.values.path !== "" && (
+          <LsFiles
+            setPath={formik.setFieldValue as any}
+            path={formik.values.path}
+          />
+        )}
       </Box>
     </Box>
   );
