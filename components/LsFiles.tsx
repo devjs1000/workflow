@@ -62,26 +62,43 @@ const LsFiles = ({ path, setPath }: Props) => {
     });
   };
 
+  const goToHome = () => {
+    setPath("path", "/");
+  };
+
+  const goBack = () => {
+    const newPath = path.split("/").slice(0, -1).join("/");
+    setPath("path", newPath);
+  };
+
   return (
-    <Accordion allowToggle>
+    <Accordion
+      shadow={"lg"}
+      className={"bg-white"}
+      allowToggle
+      rounded={"md"}
+      overflow={"clip"}
+    >
       <AccordionItem>
-        <Flex>
-          <AccordionButton w={"400px"}>File Explorer</AccordionButton>
+        <Flex className="gap-4 bg-black text-white ">
+          <AccordionButton w={"full"}>File Explorer</AccordionButton>
           <Spacer />
-          <Checkbox
-            colorScheme={"green"}
-            onChange={formik.handleChange("hidden")}
-            checked={formik.values.hidden}
-          >
-            hidden
-          </Checkbox>
-          <Checkbox
-            colorScheme={"green"}
-            onChange={formik.handleChange("list")}
-            checked={formik.values.list}
-          >
-            list
-          </Checkbox>
+          <Flex gap={4} mx={4}>
+            <Checkbox
+              colorScheme={"green"}
+              onChange={formik.handleChange("hidden")}
+              checked={formik.values.hidden}
+            >
+              hidden
+            </Checkbox>
+            <Checkbox
+              colorScheme={"green"}
+              onChange={formik.handleChange("list")}
+              checked={formik.values.list}
+            >
+              list
+            </Checkbox>
+          </Flex>
         </Flex>
         <AccordionPanel p={0}>
           <Box
@@ -97,14 +114,14 @@ const LsFiles = ({ path, setPath }: Props) => {
               <IconButton
                 aria-label="go to home"
                 icon={<BiHome />}
-                // onClick={goToHome}
+                onClick={goToHome}
                 variant="ghost"
               />
 
               <IconButton
                 aria-label="go back"
                 icon={<BiArrowBack />}
-                // onClick={goBack}
+                onClick={goBack}
                 variant="ghost"
               />
 
