@@ -13,8 +13,8 @@ export default function Home() {
     },
     onSubmit: async (values) => {
       try {
-        const { data } = await axios.post("/api/configure", values);
-        formik.setValues({ ...data });
+        const { data } = await axios.post("/api/config", values);
+        // formik.setValues({ ...data });
       } catch (err) {
         console.error(err);
       }
@@ -39,6 +39,8 @@ export default function Home() {
     return () => {};
   }, []);
 
+  const { path } = formik.values;
+
   return (
     <Box className="p-4 bg-gray-200 min-h-screen">
       <Head>
@@ -47,20 +49,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Box>
-        <Nav />
+        <Nav path={path} />
         <HStack bg="white" p="4" rounded="md" shadow="md" my={2}>
           <Input
             placeholder="path"
             onChange={formik.handleChange("path")}
-            value={formik.values.path}
+            value={path}
           />
-          <Button bg={'black'} color={"green.300"} onClick={formik.submitForm}>save</Button>
+          <Button bg={"black"} color={"green.300"} onClick={formik.submitForm}>
+            save
+          </Button>
         </HStack>
-        {formik.values.path !== "" && (
-          <LsFiles
-            setPath={formik.setFieldValue as any}
-            path={formik.values.path}
-          />
+        {path !== "" && (
+          <LsFiles setPath={formik.setFieldValue as any} path={path} />
         )}
       </Box>
     </Box>

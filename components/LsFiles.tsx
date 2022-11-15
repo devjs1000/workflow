@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Heading,
   HStack,
   IconButton,
@@ -14,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useFormik } from "formik";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiArrowBack, BiHome, BiRefresh } from "react-icons/bi";
 
 const listFiles = (
@@ -22,9 +21,10 @@ const listFiles = (
   hidden: boolean = false,
   list: boolean = false
 ) => {
-  return `/api/terminal/open?command=ls ${hidden ? "-a" : ""} ${
-    list ? "-l" : ""
-  } &path=${path}`;
+  return {
+    command: `ls ${hidden ? "-a" : ""}${list ? "-l" : ""}`,
+    path,
+  };
 };
 
 const LsFiles = ({ path, setPath }: Props) => {
@@ -42,7 +42,10 @@ const LsFiles = ({ path, setPath }: Props) => {
     try {
       let pathToUse = customPath === "" ? path : customPath;
       const { hidden, list } = formik.values;
-      const { data } = await axios.get(listFiles(pathToUse, hidden, list));
+      const { data } = await axios.post(
+        "/api/terminal/open",
+        listFiles(pathToUse, hidden, list)
+      );
       setFiles(data?.split("\n"));
       callback();
     } catch (err) {
