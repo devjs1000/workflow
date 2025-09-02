@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { Toaster } from "react-hot-toast";
 
 const colors = {
   brand: {
@@ -16,6 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
       <Component {...pageProps} />
+      <Toaster position="bottom-right" />
     </ChakraProvider>
   );
 }

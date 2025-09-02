@@ -1,0 +1,30 @@
+{
+  "blocks": [
+    {
+      "id": "react-component",
+      "title": "React Functional Component",
+      "description": "Basic React functional component template",
+      "code": "import React from 'react';\n\ninterface Props {\n  // Define your props here\n}\n\nconst ComponentName: React.FC<Props> = ({ }) => {\n  return (\n    <div>\n      {/* Your JSX here */}\n    </div>\n  );\n};\n\nexport default ComponentName;",
+      "language": "typescript",
+      "tags": [
+        "react",
+        "component",
+        "typescript"
+      ],
+      "category": "react"
+    },
+    {
+      "id": "api-route",
+      "title": "Next.js API Route",
+      "description": "Basic Next.js API route template",
+      "code": "import type { NextApiRequest, NextApiResponse } from \"next\";\n\nexport default function handler(\n  req: NextApiRequest,\n  res: NextApiResponse\n) {\n  switch (req.method) {\n    case \"GET\":\n      res.status(200).json({ message: \"GET request\" });\n      break;\n    case \"POST\":\n      res.status(200).json({ message: \"POST request\" });\n      break;\n    default:\n      res.status(405).json({ error: \"Method not allowed\" });\n  }\n}",
+      "language": "typescript",
+      "tags": [
+        "nextjs",
+        "api",
+        "typescript"
+      ],
+      "category": "api"
+    }
+  ]
+}
